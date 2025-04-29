@@ -4,7 +4,7 @@ import { FaAngleDown } from "react-icons/fa";
 import Image from "next/image";
 const Header = () => {
   return (
-    <section className="h-[55px] justify-between bg-white flex items-center px-4">
+    <section className="h-[55px] border-b border-b-neutral-200 justify-between bg-white flex items-center px-4">
       <div className="flex items-center">
         <div className="text-neutral-800 flex items-center gap-3">
           <Logs className="size-5" />
