@@ -1,20 +1,12 @@
 "use client";
-import { useContext } from "react";
 import {
   Dialog,
   DialogBackdrop,
   DialogPanel,
-  DialogTitle,
   TransitionChild,
 } from "@headlessui/react";
-import {
-  X,
-  Search,
-  ChevronRight,
-} from "lucide-react";
-import { problems } from "@/constants/Problems";
-import { ProblemContext } from "../context/problemContext";
-import { getDifficultyColor, getTagColor } from "@/lib/util";
+import { X } from "lucide-react";
+import ProblemList from "./problemList";
 
 type SidebarProps = {
   open: boolean;
@@ -22,21 +14,6 @@ type SidebarProps = {
 };
 
 const Sidebar = ({ open, setOpen }: SidebarProps) => {
-  const context = useContext(ProblemContext);
-  if (!context) {
-    throw new Error("Sidebar must be used within a ProblemContextProvider");
-  }
-
-  const { setProblem } = context;
-
-  const handleProblemChange = (index: number) => {
-    setProblem({
-      runCode: false,
-      problemNo: index,
-    });
-    setOpen(false);
-  };
-
   return (
     <Dialog open={open} onClose={setOpen} className="relative z-50">
       <DialogBackdrop
@@ -64,50 +41,7 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                 </div>
               </TransitionChild>
 
-              <div className="flex font-inter h-full flex-col overflow-y-scroll bg-white dark:bg-gray-800 shadow-xl">
-                <div className="relative flex-1">
-                  <div className="">
-                    {problems?.map((item, index) => (
-                      <div
-                        onClick={() => handleProblemChange(index)}
-                        key={index}
-                        className="hover:bg-neutral-50 dark:hover:bg-gray-700 border-t py-2 px-6 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-gray-800 transition-all duration-200 cursor-pointer hover:border-blue-200 dark:hover:border-blue-700 group"
-                      >
-                        <div className="flex justify-between items-start">
-                          <div className="flex items-start gap-3">
-                            <div>
-                              <p className="text-md text-neutral-700 dark:text-neutral-200 transition-colors duration-200">
-                                {item.title}
-                              </p>
-                              <div className="flex flex-wrap gap-2 mt-1">
-                                <span
-                                  className={`text-xs rounded-xl h-[20px] px-3 flex items-center ${getDifficultyColor(
-                                    item.difficulty
-                                  )}`}
-                                >
-                                  {item.difficulty}
-                                </span>
-
-                                {item.tags?.map((tag, tagIndex) => (
-                                  <span
-                                    key={tagIndex}
-                                    className={`text-xs items-center flex h-[20px] px-3 rounded-full font-medium ${getTagColor(
-                                      tagIndex
-                                    )}`}
-                                  >
-                                    {tag}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                          <ChevronRight className="h-5 w-5 text-gray-300 dark:text-gray-500 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors duration-200 mt-1" />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <ProblemList setOpen={setOpen} />
             </DialogPanel>
           </div>
         </div>
