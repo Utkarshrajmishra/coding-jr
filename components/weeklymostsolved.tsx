@@ -16,13 +16,13 @@ import {
 } from "@/components/ui/chart";
 
 const chartData = [
-  { day: "Monday", User: 186, Problems: 80 },
-  { day: "Tuesday", User: 305, Problems: 200 },
-  { day: "Wednesday", User: 237, Problems: 120 },
-  { day: "Thursday", User: 73, Problems: 190 },
-  { day: "Friday", User: 209, Problems: 130 },
-  { day: "Saturday", User: 214, Problems: 140 },
-  { day: "Sunday", User: 214, Problems: 140 },
+  { day: "Two Sum", User: 186 },
+  { day: "Remove duplicate", User: 305 },
+  { day: "Rotated the array", User: 237 },
+  { day: "Search in sorted and rotated array", User: 73 },
+  { day: "Koko loves banana", User: 209 },
+  { day: "Three Sum", User: 214 },
+  { day: "Frog Jump", User: 214 },
 ];
 
 const chartConfig = {
@@ -39,7 +39,7 @@ const chartConfig = {
 export default function WeeklyMostSolved() {
   return (
     <section className="h-fit w-[350px] p-2 rounded-lg border-1 border-neutral-300 bg-white">
-      <p className="text-sm font-medium text-neutral-700">Total Weekly User</p>
+      <p className="text-sm font-medium text-neutral-700">Weekly Most Solved</p>
       <ChartContainer config={chartConfig} className="w-full mt-2 h-40 pl-0">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -67,8 +67,7 @@ export default function WeeklyMostSolved() {
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
-            <Bar dataKey="User" fill="#0094fe" radius={0} barSize={10} />
-            <Bar dataKey="Problems" fill="#2be3a3" radius={0} barSize={10} />
+            <Bar dataKey="User" fill="#4ab48f" radius={0} barSize={10} />
           </BarChart>
         </ResponsiveContainer>
       </ChartContainer>
