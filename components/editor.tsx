@@ -64,7 +64,7 @@ const CodeEditor = ({ isMobile }: CodeEditorProps) => {
 
   return (
     <section className="flex flex-col flex-grow">
-      <div className="h-auto sm:h-12 border-b border-b-zinc-300 py-2 sm:py-0 justify-between px-2 bg-neutral-100 flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-0 w-full">
+      <div className="h-auto sm:h-12 border-b border-l border-zinc-300 py-2 sm:py-0 justify-between px-2 bg-neutral-100 flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-0 w-full">
         <div className="text-xs">
           <select
             value={language}
