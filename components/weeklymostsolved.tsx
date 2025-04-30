@@ -36,7 +36,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function TotalWeeklyUser() {
+export default function WeeklyMostSolved() {
   return (
     <section className="h-fit w-[350px] p-2 rounded-lg border-1 border-neutral-300 bg-white">
       <p className="text-sm font-medium text-neutral-700">Total Weekly User</p>
