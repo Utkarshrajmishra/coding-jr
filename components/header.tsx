@@ -1,13 +1,17 @@
+"use client"
+import { useState } from "react";
 import { Bell, Logs } from "lucide-react";
+import Sidebar from "./sidebar";
 import { ChevronRight } from "lucide-react";
 import { FaAngleDown } from "react-icons/fa";
 import Image from "next/image";
 const Header = () => {
+   const [open,setOpen]=useState<boolean>(false)
   return (
     <section className="h-[55px] border-b border-b-neutral-200 justify-between bg-white flex items-center px-4">
       <div className="flex items-center">
         <div className="text-neutral-800 flex items-center gap-3">
-          <Logs className="size-5" />
+          <Logs onClick={()=>setOpen(true)} className="size-5" />
           <p className="text-[0.85rem]">Problem List</p>
         </div>
         <div className="h-6 mx-3 w-[1px] bg-neutral-800"></div>
@@ -50,6 +54,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <Sidebar setOpen={setOpen} open={open}/>
     </section>
   );
 };

@@ -65,3 +65,29 @@ export const getCompletedQuestions = (questionId: number) => {
   }
   return false;
 };
+
+
+  export const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty.toLowerCase()) {
+      case "easy":
+        return "bg-emerald-50 text-emerald-700 border border-emerald-200";
+      case "medium":
+        return "bg-amber-50 text-amber-700 border border-amber-200";
+      case "hard":
+        return "bg-rose-50 text-rose-700 border border-rose-200";
+      default:
+        return "bg-blue-50 text-blue-700 border border-blue-200";
+    }
+  };
+
+
+  export const getTagColor = (index: number) => {
+      const colors = [
+        "bg-violet-50 text-violet-700 border border-violet-200",
+        "bg-sky-50 text-sky-700 border border-sky-200",
+        "bg-indigo-50 text-indigo-700 border border-indigo-200",
+        "bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-200",
+        "bg-teal-50 text-teal-700 border border-teal-200",
+      ];
+      return colors[index % colors.length];
+    };
