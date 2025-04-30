@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import { ProblemContextProvider } from "@/context/problemContext";
+import { ThemeProvider } from "@/context/themeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen`}
       >
-        <ProblemContextProvider>{children}</ProblemContextProvider>
+        <ThemeProvider>
+          <ProblemContextProvider>{children}</ProblemContextProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

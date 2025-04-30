@@ -9,12 +9,8 @@ import {
 } from "@headlessui/react";
 import {
   X,
-  ListFilter,
   Search,
-  Code,
-  Star,
   ChevronRight,
-  BookOpen,
 } from "lucide-react";
 import { problems } from "@/constants/Problems";
 import { ProblemContext } from "../context/problemContext";
@@ -68,19 +64,19 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                 </div>
               </TransitionChild>
 
-              <div className="flex font-inter h-full flex-col overflow-y-scroll bg-white shadow-xl">
+              <div className="flex font-inter h-full flex-col overflow-y-scroll bg-white dark:bg-gray-800 shadow-xl">
                 <div className="relative flex-1">
                   <div className="">
                     {problems?.map((item, index) => (
                       <div
                         onClick={() => handleProblemChange(index)}
                         key={index}
-                        className="hover:bg-neutral-50 border-t py-2 px-6  border-neutral-300 bg-white  transition-all duration-200 cursor-pointer hover:border-blue-200 group"
+                        className="hover:bg-neutral-50 dark:hover:bg-gray-700 border-t py-2 px-6 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-gray-800 transition-all duration-200 cursor-pointer hover:border-blue-200 dark:hover:border-blue-700 group"
                       >
                         <div className="flex justify-between items-start">
                           <div className="flex items-start gap-3">
                             <div>
-                              <p className="text-md text-neutral-700  transition-colors duration-200">
+                              <p className="text-md text-neutral-700 dark:text-neutral-200 transition-colors duration-200">
                                 {item.title}
                               </p>
                               <div className="flex flex-wrap gap-2 mt-1">
@@ -105,7 +101,7 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                               </div>
                             </div>
                           </div>
-                          <ChevronRight className="h-5 w-5 text-gray-300 group-hover:text-neutral-700 transition-colors duration-200 mt-1" />
+                          <ChevronRight className="h-5 w-5 text-gray-300 dark:text-gray-500 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors duration-200 mt-1" />
                         </div>
                       </div>
                     ))}
