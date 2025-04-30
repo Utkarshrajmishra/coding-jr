@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import ReactMarkdown from "react-markdown";
 import { useContext, useEffect, useState } from "react";
 import { ProblemContext } from "../context/problemContext";
@@ -8,24 +8,22 @@ import ProblemSwitch from "./problemSwitch";
 import { getCompletedQuestions } from "@/lib/util";
 
 const Problem = () => {
-    const [solved, setSolved] = useState(false);
-    const context = useContext(ProblemContext);
-    if (!context) {
-      throw new Error("Problem Context not found");
-    }
+  const [solved, setSolved] = useState(false);
+  const context = useContext(ProblemContext);
+  if (!context) {
+    throw new Error("Problem Context not found");
+  }
 
-    const { problem } = context;
+  const { problem } = context;
 
-    useEffect(() => {
-      if (getCompletedQuestions(problems[problem.problemNo].id)) {
-        setSolved(true);
-      }
-    }, [problem]);
+  useEffect(() => {
+    if (getCompletedQuestions(problems[problem.problemNo].id)) {
+      setSolved(true);
+    } else setSolved(false);
+  }, [problem]);
 
   return (
     <>
-      <div className="flex flex-row">
-        <ProblemSwitch />
         <section className="font-inter bg-white border-r border-neutral-300 s  md:w-[450px] h-[100vh-55px] overflow-y-scroll">
           <div>
             <div className="pb-4 px-4 ">
@@ -34,7 +32,7 @@ const Problem = () => {
                   <p className="text-neutral-900 font-semibold">
                     {problems[problem.problemNo].title}
                   </p>
-                  <Check className="size-5 sm:size-5 text-emerald-700" />
+                  {solved && <Check className="size-5 sm:size-5 text-emerald-700" />}
                 </div>
                 <ReactMarkdown
                   components={{
@@ -140,7 +138,6 @@ const Problem = () => {
             </div>
           </div>
         </section>
-      </div>
     </>
   );
 };

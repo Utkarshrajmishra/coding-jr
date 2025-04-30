@@ -1,6 +1,5 @@
 "use client";
 import React, { useContext, useState, useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
 import { GrPowerReset } from "react-icons/gr";
 import {
   getDefaultCode,
@@ -16,7 +15,7 @@ type CodeEditorProps = {
   isMobile?: boolean;
 };
 
-const CodeEditor = ({ isMobile }: CodeEditorProps) => {
+const CodeEditor = ({ setSubmit,isMobile }: CodeEditorProps) => {
   const [value, setValue] = useState("console.log('hello world!');");
   const [language, setLanguage] = useState("javascript");
   const [editorHeight, setEditorHeight] = useState("300px");
@@ -92,7 +91,8 @@ const CodeEditor = ({ isMobile }: CodeEditorProps) => {
 
           <button
             onClick={() => {
-              // markComplete(problems[problem.problemNo].id);
+                            setSubmit(true);
+               markComplete(problems[problem.problemNo].id);
             }}
             className="text-xs cursor-pointer text-white bg-emerald-600 py-1 sm:py-[6px] px-2 sm:px-3 rounded font-inter"
           >
