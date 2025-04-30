@@ -1,94 +1,90 @@
-import { AiFillPieChart } from "react-icons/ai";
-import { LuChartNoAxesColumn } from "react-icons/lu";
-import { BsCart3 } from "react-icons/bs";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { LuChartSpline } from "react-icons/lu";
-import { FiMessageSquare } from "react-icons/fi";
+import { GoChevronDown } from "react-icons/go";
+import { RxDashboard } from "react-icons/rx";
+import { LuLibrary } from "react-icons/lu";
 import { CiSettings } from "react-icons/ci";
-import { PiSignOutFill } from "react-icons/pi";
-import { FaLaptopCode } from "react-icons/fa6";
+import { MdOutlineAttachMoney } from "react-icons/md";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
-export const NavLinks = [
+const NavLinks = [
   {
     id: 1,
     title: "Dashboard",
-    icon: <AiFillPieChart className="size-4" />,
+    icon: <RxDashboard className="size-5" />,
   },
   {
     id: 2,
-    title: "Anal",
-    icon: <LuChartNoAxesColumn className="size-4" />,
+    title: "My Library",
+    icon: <LuLibrary className="size-5" />,
   },
   {
     id: 3,
-    title: "Order",
-    icon: <BsCart3 className="size-4" />,
+    title: "Notifications",
+    icon: <IoIosNotificationsOutline className="size-5" />,
   },
   {
     id: 4,
-    title: "Products",
-    icon: <HiOutlineShoppingBag className="size-4" />,
+    title: "Settings",
+    icon: <CiSettings className="size-5" />,
   },
   {
     id: 5,
-    title: "Sales Report",
-    icon: <LuChartSpline className="size-4" />,
-  },
-  {
-    id: 6,
-    title: "Messages",
-    icon: <FiMessageSquare className="size-4" />,
-  },
-  {
-    id: 7,
-    title: "Settings",
-    icon: <CiSettings className="size-4" />,
-  },
-  {
-    id: 8,
-    title: "Sign Out",
-    icon: <PiSignOutFill className="size-4" />,
+    title: "Billing",
+    icon: <MdOutlineAttachMoney className="size-5" />,
   },
 ];
 
 const DashboardSidebar = () => {
+
   return (
-    <section className="lg:inline-block hidden w-[250px] h-screen py-4 px-10">
-      <div className="flex items-center gap-4">
-        <div className="p-[5px] bg-blue w-fit h-fit rounded">
-          <FaLaptopCode className="size-4 text-white" />
+    <section className="w-[250px] border-r border-r-slate-200 flex flex-col bg-white h-screen">
+      <div className="p-4">
+        <div className="font-poppins flex justify-between items-center bg-slate-50 text-slate-700 hover:text-slate-900 hover:cursor-pointer py-2 px-4 text-center border border-slate-200 rounded-lg  transition-all duration-200">
+          <span className="text-sm">Utkarsh's Workshop</span>
+          <GoChevronDown className="size-4" />
         </div>
-        <p className="font-[500]  text-neutral-800">Dabang</p>
       </div>
-      <div className="flex flex-col gap-2 mt-6">
+
+      <section className="mt-4 px-4">
+        <p className="text-neutral-500 text-xs  font-semibold uppercase tracking-wider mb-3 ml-1">
+          Menu
+        </p>
+
         {NavLinks?.map((link, index) => (
           <div
             key={link.id}
-            className={`text-[0.70rem] cursor-pointer tracking-tight flex items-center gap-4 pl-3 py-[8px] ${
+            className={`p-2 flex gap-4 rounded-lg cursor-pointer transition-all duration-200 mt-1 ${
               index === 0
-                ? "text-white bg-blue rounded-lg mb-1 shadow-blue-800"
-                : "text-zinc-500 hover:bg-blue-50  rounded-lg "
+                ? "bg-slate-100 text-slate-900 font-medium"
+                : "text-slate-600 hover:bg-slate-50 hover:text-slate-800"
             }`}
           >
-            {link.icon}
-            <p>{link.title}</p>
+            <div
+              className={
+              index === 0 ? "text-slate-800" : "text-slate-500"
+              }
+            >
+              {link.icon}
+            </div>
+            <p className="text-sm font-poppins">{link.title}</p>
           </div>
         ))}
-      </div>
+      </section>
 
-      <div className="bg-blue px-[2px] font-poppins flex flex-col items-center justify-between  mt-14 rounded-lg py-4 w-full h-[140px]">
-        <div className="p-1 bg-white text-blue w-fit h-fit rounded">
-          <FaLaptopCode className="size-4 text-blue" />
-        </div>
-        <div className="text-center px-2">
-          <p className="text-white text-[0.76rem] font-[550]">Dabang Pro</p>
-          <p className="text-[0.52rem] text-light text-center text-white">
-            Lorem ipsum <br /> sit sit consectetur
-          </p>
-        </div>
-        <button className="text-[0.70rem] mt-1 rounded py-1 ronded px-5 bg-white text-blue">
-          Get Pro
-        </button>
+      <div className="flex-1 flex flex-col justify-end ">
+       
+        <section className=" bg-slate-50 border border-slate-200 rounded-lg font-poppins overflow-hidden shadow-sm">
+          <div className="p-2 flex items-center gap-3">
+            <div className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-slate-600 font-medium">
+              UM
+            </div>
+            <div>
+              <p className="text-sm text-slate-800">Utkarsh Raj Mishra</p>
+              <p className="text-xs text-slate-500 truncate">
+                utkarshrajmishra811545@gmail.com
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   );
