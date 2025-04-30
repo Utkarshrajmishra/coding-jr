@@ -1,3 +1,4 @@
+"use client"
 const ProblemSwitch = () => {
   return (
     <section className="h-screen text-zinc-700 text-sm flex flex-col bg-neutral-100 border-r justify-center py-4 border-neutral-300 w-6">

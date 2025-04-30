@@ -8,6 +8,7 @@ import {
   markComplete,
   setCode,
 } from "../lib/util";
+import CodeMirrorEditor from "./codeMirror";
 // import { ProblemContext } from "../context/problemContext";
 // import { problems } from "../constants/problems";
 
@@ -100,14 +101,11 @@ const CodeEditor = ({ isMobile }: CodeEditorProps) => {
           </button>
         </div>
       </div>
-
-      <CodeMirror
+      <CodeMirrorEditor
         value={value}
-        theme="dark"
-        width="100%"
-        height={editorHeight}
-        extensions={[languageExtensions[language]]}
         onChange={onChange}
+        editorHeight={editorHeight}
+        language={[languageExtensions[language]]}
       />
     </section>
   );
