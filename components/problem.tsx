@@ -1,25 +1,26 @@
+"use client"
 import ReactMarkdown from "react-markdown";
-// import { useContext, useEffect, useState } from "react";
-// import { ProblemContext } from "../context/problemContext";
-// import { getCompletedQuestions } from "../lib/utils";
+import { useContext, useEffect, useState } from "react";
+import { ProblemContext } from "../context/problemContext";
 import { Check } from "lucide-react";
 import { problems } from "@/constants/Problems";
 import ProblemSwitch from "./problemSwitch";
+import { getCompletedQuestions } from "@/lib/util";
 
 const Problem = () => {
-  //   const [solved, setSolved] = useState(false);
-  //   const context = useContext(ProblemContext);
-  //   if (!context) {
-  //     throw new Error("Problem Context not found");
-  //   }
+    const [solved, setSolved] = useState(false);
+    const context = useContext(ProblemContext);
+    if (!context) {
+      throw new Error("Problem Context not found");
+    }
 
-  //   const { problem } = context;
+    const { problem } = context;
 
-  //   useEffect(() => {
-  //     if (getCompletedQuestions(problems[problem.problemNo].id)) {
-  //       setSolved(true);
-  //     }
-  //   }, [problem]);
+    useEffect(() => {
+      if (getCompletedQuestions(problems[problem.problemNo].id)) {
+        setSolved(true);
+      }
+    }, [problem]);
 
   return (
     <>
@@ -31,7 +32,7 @@ const Problem = () => {
               <div className="text-neutral-700 mt-4">
                 <div className="flex items-center justify-between">
                   <p className="text-neutral-900 font-semibold">
-                    {problems[0].title}
+                    {problems[problem.problemNo].title}
                   </p>
                   <Check className="size-5 sm:size-5 text-emerald-700" />
                 </div>
@@ -81,7 +82,7 @@ const Problem = () => {
                     ),
                   }}
                 >
-                  {problems[0].desc}
+                  {problems[problem.problemNo].desc}
                 </ReactMarkdown>
               </div>
 
@@ -95,7 +96,7 @@ const Problem = () => {
                       Input:
                     </p>
                     <pre className="bg-white p-2  text-zinc-800 text-xs rounded border border-neutral-200  font-mono overflow-x-auto">
-                      {problems[0].example.input}
+                      {problems[problem.problemNo].example.input}
                     </pre>
                   </div>
 
@@ -104,7 +105,7 @@ const Problem = () => {
                       Output:
                     </p>
                     <pre className="bg-white p-2 text-zinc-800 text-xs rounded border border-neutral-200  font-mono overflow-x-auto">
-                      {problems[0].example.output}
+                      {problems[problem.problemNo].example.output}
                     </pre>
                   </div>
 
@@ -113,7 +114,7 @@ const Problem = () => {
                       Explanation:
                     </p>
                     <p className="text-sm text-zinc-800 leading-relaxed">
-                      {problems[0].example.explanation}
+                      {problems[problem.problemNo].example.explanation}
                     </p>
                   </div>
                 </div>
@@ -124,14 +125,16 @@ const Problem = () => {
                   Constraints
                 </p>
                 <ul className="space-y-2 list-disc pl-5">
-                  {problems[0].constraints?.map((item, index) => (
-                    <li
-                      key={index}
-                      className="text-sm text-neutral-700 leading-relaxed"
-                    >
-                      {item}
-                    </li>
-                  ))}
+                  {problems[problem.problemNo].constraints?.map(
+                    (item, index) => (
+                      <li
+                        key={index}
+                        className="text-sm text-neutral-700 leading-relaxed"
+                      >
+                        {item}
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
             </div>

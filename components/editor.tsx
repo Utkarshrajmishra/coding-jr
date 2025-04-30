@@ -9,9 +9,8 @@ import {
   setCode,
 } from "../lib/util";
 import CodeMirrorEditor from "./codeMirror";
-// import { ProblemContext } from "../context/problemContext";
-// import { problems } from "../constants/problems";
-
+import { ProblemContext } from "@/context/problemContext";
+import { problems } from "@/constants/Problems";
 type CodeEditorProps = {
   setSubmit: (submit: boolean) => void;
   isMobile?: boolean;
@@ -22,12 +21,12 @@ const CodeEditor = ({ isMobile }: CodeEditorProps) => {
   const [language, setLanguage] = useState("javascript");
   const [editorHeight, setEditorHeight] = useState("300px");
 
-  // const context = useContext(ProblemContext);
-  // if (!context) {
-  //   throw new Error("Problem Context not found");
-  // }
+  const context = useContext(ProblemContext);
+  if (!context) {
+    throw new Error("Problem Context not found");
+  }
 
-  // const { setProblem, problem } = context;
+  const { setProblem, problem } = context;
 
   useEffect(() => {
     const updateHeight = () => {
@@ -54,14 +53,14 @@ const CodeEditor = ({ isMobile }: CodeEditorProps) => {
     setValue(getDefaultCode(selectedLang));
   };
 
-  // const runCode = () => {
-  //   setProblem((prev) => ({
-  //     problemNo: prev.problemNo,
-  //     runCode: true,
-  //   }));
+  const runCode = () => {
+    setProblem((prev) => ({
+      problemNo: prev.problemNo,
+      runCode: true,
+    }));
 
-  //   setCode(value, problems[problem.problemNo].id, language);
-  // };
+    setCode(value, problems[problem.problemNo].id, language);
+  };
 
   return (
     <section className="flex flex-col flex-grow">
@@ -85,7 +84,7 @@ const CodeEditor = ({ isMobile }: CodeEditorProps) => {
           </button>
 
           <button
-            // onClick={runCode}
+            onClick={runCode}
             className="text-xs cursor-pointer text-zinc-700 border border-zinc-400 py-1 sm:py-[6px] px-2 sm:px-3 rounded font-inter"
           >
             Run Code

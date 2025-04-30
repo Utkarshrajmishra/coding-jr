@@ -2,7 +2,7 @@
 import { useContext, useState, useEffect } from "react";
 import { AiFillCode } from "react-icons/ai";
 import { problems } from "@/constants/Problems";
-// import { ProblemContext } from "../context/problemContext";
+import { ProblemContext } from "../context/problemContext";
 import { Check } from "lucide-react";
 
 type TestCaseProps = {
@@ -15,14 +15,13 @@ const TestCase = ({ isMobile }: TestCaseProps) => {
     "calc(100vh - 349px)"
   );
 
-//   const context = useContext(ProblemContext);
-//   if (!context) {
-//     throw new Error("Problem Context not found");
-//   }
+  const context = useContext(ProblemContext);
+  if (!context) {
+    throw new Error("Problem Context not found");
+  }
 
-//   const { problem } = context;
+  const { problem } = context;
 
-  // Adjust test case section height based on screen size
   useEffect(() => {
     const updateHeight = () => {
       if (window.innerWidth < 768) {
@@ -62,9 +61,9 @@ const TestCase = ({ isMobile }: TestCaseProps) => {
             onClick={() => setActiveTest(index)}
           >
             Case {index + 1}
-            {/* {problem.runCode && (
+            {problem.runCode && (
               <Check className="size-3 sm:size-4 text-emerald-700" />
-            )} */}
+            )}
           </button>
         ))}
       </div>
@@ -77,7 +76,7 @@ const TestCase = ({ isMobile }: TestCaseProps) => {
                 INPUT:
               </p>
               <pre className="bg-neutral-50 text-zinc-800 p-1.5 sm:p-2 text-xs rounded border border-neutral-200 font-mono overflow-x-auto whitespace-pre-wrap">
-                {problems[0].testCases[activeTest].input}
+                {problems[problem.problemNo].testCases[activeTest].input}
               </pre>
             </div>
 
@@ -86,7 +85,7 @@ const TestCase = ({ isMobile }: TestCaseProps) => {
                 EXPECTED OUTPUT:
               </p>
               <pre className="bg-neutral-50 text-zinc-800 text-light p-1.5 sm:p-2 text-xs rounded border border-neutral-200 font-mono overflow-x-auto whitespace-pre-wrap">
-                {problems[0].testCases[activeTest].output}
+                {problems[problem.problemNo].testCases[activeTest].output}
               </pre>
             </div>
           </div>
