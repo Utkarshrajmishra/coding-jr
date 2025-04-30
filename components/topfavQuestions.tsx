@@ -1,3 +1,4 @@
+"use client";
 import {
   Table,
   TableBody,
@@ -7,6 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ProgressBar } from "./Progess";
+
 const popularProducts = [
   {
     id: "P001",
@@ -32,12 +34,11 @@ const popularProducts = [
     bgColor: "bg-emerald-100",
     textcolor: "text-emerald-500",
   },
-  
 ];
 
 export function FavProblems() {
   return (
-    <div className="w-[350px] rounded-lg bg-white border border-neutral-300 p-2">
+    <div className="w-full md:w-[350px] rounded-lg bg-white border border-neutral-300 p-2">
       <p className="text-sm font-medium text-neutral-700">
         Most Liked Problems
       </p>
@@ -47,7 +48,7 @@ export function FavProblems() {
             <TableRow className="text-xs font-normal">
               <TableHead className="text-zinc-500">#</TableHead>
               <TableHead className="text-zinc-500">Name</TableHead>
-              <TableHead className="w-32 sm:w-48 md:w-64 lg:w-auto text-zinc-500">
+              <TableHead className="w-32 sm:w-48 md:w-32 lg:w-auto text-zinc-500">
                 Popularity
               </TableHead>
               <TableHead className="text-zinc-500">Likes</TableHead>
@@ -57,7 +58,9 @@ export function FavProblems() {
             {popularProducts.map((invoice, index) => (
               <TableRow key={invoice.id}>
                 <TableCell className="text-zinc-600">{index + 1}</TableCell>
-                <TableCell className="text-zinc-600">{invoice.name}</TableCell>
+                <TableCell className="text-zinc-600 max-w-[120px] md:max-w-[80px] lg:max-w-[120px] truncate">
+                  {invoice.name}
+                </TableCell>
                 <TableCell>
                   {
                     <ProgressBar

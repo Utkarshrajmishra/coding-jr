@@ -1,22 +1,34 @@
 "use client";
-import { useState } from "react";
-import { Bell, Logs, Mail, Search } from "lucide-react";
-import Sidebar from "./sidebar";
-import { ChevronRight } from "lucide-react";
+import { Bell, Mail, Pencil, Search, Menu } from "lucide-react";
 import { FaAngleDown } from "react-icons/fa";
 import Image from "next/image";
 
+type DashboardHeaderProps = {
+  toggleSidebar: () => void;
+};
 
-const DashboardHeader = () => {
+
+const DashboardHeader = ({ toggleSidebar }:DashboardHeaderProps) => {
   return (
-    <section className="h-[55px] w-ful border-b border-b-neutral-200 justify-between bg-white flex items-center px-4">
+    <section className="h-[55px] w-full border-b border-b-neutral-200 justify-between bg-white flex items-center px-4">
       <div className="flex items-center">
+        {/* Hamburger menu for mobile */}
+        <button
+          onClick={toggleSidebar}
+          className="mr-3 md:hidden focus:outline-none"
+          aria-label="Toggle sidebar"
+        >
+          <Menu className="h-5 w-5 text-neutral-700" />
+        </button>
+
         <div className="text-neutral-700 flex items-center gap-3">
           <p className="hidden sm:inline-block font-semibold">Dashboard</p>
         </div>
       </div>
-      <div className="flex gap-4">
-        <div className="relative text-xs overflow-hidden max-w-sm border rounded">
+
+      <div className="flex items-center gap-2 md:gap-4">
+        {/* Search - hidden on smallest screens */}
+        <div className="relative text-xs overflow-hidden max-w-sm border rounded hidden sm:block">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600 h-4 w-4" />
           <input
             placeholder="Search here..."
@@ -24,28 +36,34 @@ const DashboardHeader = () => {
           />
         </div>
 
-        <div className="md:flex hidden items-center gap-2 mx-4 whitespace-nowrap">
+        {/* Language selector - hidden on mobile */}
+        <div className="hidden md:flex items-center gap-2 mx-4 whitespace-nowrap">
           <div className="bg-zinc-700 h-4 w-4 rounded-lg">
             <Image alt="Eng" src="/usa.png" width={16} height={16} />
           </div>
           <p className="text-xs text-neutral-800">Eng (US)</p>
           <FaAngleDown className="size-3 text-zinc-500" />
         </div>
-        <div className="p-2 md:inline-block hidden bg-orange-50 w-fit h-fit rounded-lg">
+
+        {/* Notification icon - hidden on mobile */}
+        <div className="p-2 hidden md:inline-block bg-orange-50 w-fit h-fit rounded-lg">
           <Bell className="text-orange-400 h-[14px] w-[14px]" />
         </div>
-        <div className="p-2 md:inline-block hidden bg-emerald-50 w-fit h-fit rounded-lg">
-          <Mail className="text-emerald-400 h-[14px] w-[14px]" />
+
+        {/* Pencil icon - shown on all screens */}
+        <div className="p-2 bg-emerald-50 w-fit h-fit rounded-lg">
+          <Pencil className="text-emerald-400 cursor-pointer h-[14px] w-[14px]" />
         </div>
 
+        {/* User profile */}
         <div className="flex items-center gap-2">
           <div className="bg-zinc-700 h-9 w-9 rounded-lg">
             <Image
               alt="User"
               src="/user.jpeg"
               width={36}
-              height={46}
-              className="rounded-lg object-fit"
+              height={36}
+              className="rounded-lg object-cover"
             />
           </div>
           <div className="hidden sm:inline-block">

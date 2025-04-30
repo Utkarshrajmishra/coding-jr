@@ -31,7 +31,7 @@ const chartConfig = {
 
 export function UserPerMonth() {
   return (
-    <section className="h-fit w-[350px]  rounded-xl border border-neutral-300 p-2 bg-white">
+    <section className="w-full md:w-[350px] rounded-xl border border-neutral-300 p-2 bg-white">
       <p className="text-sm font-medium text-neutral-700">Total Users</p>
       <ChartContainer config={chartConfig} className="h-[167px] w-full">
         <ResponsiveContainer width="100%" height="100%">

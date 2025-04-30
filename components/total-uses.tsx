@@ -38,7 +38,7 @@ const chartConfig = {
 
 export default function TotalWeeklyUser() {
   return (
-    <section className="h-fit w-[350px] p-2 rounded-lg border-1 border-neutral-300 bg-white">
+    <section className="w-full lg:w-[350px] p-2 rounded-lg border border-neutral-300 bg-white">
       <p className="text-sm font-medium text-neutral-700">Total Weekly User</p>
       <ChartContainer config={chartConfig} className="w-full mt-2 h-40 pl-0">
         <ResponsiveContainer width="100%" height="100%">
