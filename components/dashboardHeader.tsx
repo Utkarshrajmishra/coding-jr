@@ -2,13 +2,16 @@
 import { Bell, Mail, Pencil, Search, Menu } from "lucide-react";
 import { FaAngleDown } from "react-icons/fa";
 import Image from "next/image";
+import { Dispatch, SetStateAction } from "react";
+import Link from "next/link";
 
 type DashboardHeaderProps = {
   toggleSidebar: () => void;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 
-const DashboardHeader = ({ toggleSidebar }:DashboardHeaderProps) => {
+const DashboardHeader = ({ toggleSidebar, setOpen }:DashboardHeaderProps) => {
   return (
     <section className="h-[55px] w-full border-b border-b-neutral-200 justify-between bg-white flex items-center px-4">
       <div className="flex items-center">
@@ -46,12 +49,18 @@ const DashboardHeader = ({ toggleSidebar }:DashboardHeaderProps) => {
         </div>
 
         {/* Notification icon - hidden on mobile */}
-        <div className="p-2 hidden md:inline-block bg-orange-50 w-fit h-fit rounded-lg">
-          <Bell className="text-orange-400 h-[14px] w-[14px]" />
-        </div>
+        <Link href={"/"}>
+          {" "}
+          <div className="p-2 hidden md:inline-block bg-orange-50 w-fit h-fit rounded-lg">
+            <Bell className="text-orange-400 h-[14px] w-[14px]" />
+          </div>
+        </Link>
 
         {/* Pencil icon - shown on all screens */}
-        <div className="p-2 bg-emerald-50 w-fit h-fit rounded-lg">
+        <div
+          onClick={() => setOpen((prev) => !prev)}
+          className="p-2 bg-emerald-50 w-fit h-fit rounded-lg"
+        >
           <Pencil className="text-emerald-400 cursor-pointer h-[14px] w-[14px]" />
         </div>
 

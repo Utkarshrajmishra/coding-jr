@@ -1,15 +1,16 @@
 "use client"
 import { useContext, useState, useEffect } from "react";
 import { AiFillCode } from "react-icons/ai";
-import { problems } from "@/constants/Problems";
 import { ProblemContext } from "../context/problemContext";
 import { Check } from "lucide-react";
+import { useProblemContext } from "@/context/problemListContext";
 
 type TestCaseProps = {
   isMobile: boolean;
 };
 
 const TestCase = ({ isMobile }: TestCaseProps) => {
+  const {problems}=useProblemContext()
   const [activeTest, setActiveTest] = useState(0);
   const [testSectionHeight, setTestSectionHeight] = useState(
     "calc(100vh - 349px)"
@@ -50,7 +51,7 @@ const TestCase = ({ isMobile }: TestCaseProps) => {
       </div>
 
       <div className="flex border-b overflow-y-scroll border-neutral-200 bg-white overflow-x-auto">
-        {problems[0].testCases?.map((_, index) => (
+        {problems[0].testCases?.map((_, index:number) => (
           <button
             key={index}
             className={`px-2 sm:px-4 flex items-center gap-1 sm:gap-2 text-xs sm:text-[0.83rem] py-2 font-medium transition-colors ${

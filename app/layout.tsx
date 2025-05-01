@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import { ProblemContextProvider } from "@/context/problemContext";
 import { ThemeProvider } from "@/context/themeContext";
+import { ProblemProvider } from "@/context/problemListContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +32,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen`}
       >
-        <ThemeProvider>
-          <ProblemContextProvider>{children}</ProblemContextProvider>
-        </ThemeProvider>
+        <ProblemProvider>
+          <ThemeProvider>
+            <ProblemContextProvider>{children}</ProblemContextProvider>
+          </ThemeProvider>
+        </ProblemProvider>
       </body>
     </html>
   );

@@ -17,6 +17,7 @@
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-progress": "^1.1.4",
     "@uiw/react-codemirror": "^4.23.11",
+    "@uiw/react-md-editor": "^4.0.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.503.0",

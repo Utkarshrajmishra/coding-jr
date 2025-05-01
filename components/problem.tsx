@@ -3,10 +3,11 @@ import ReactMarkdown from "react-markdown";
 import { useContext, useEffect, useState } from "react";
 import { ProblemContext } from "../context/problemContext";
 import { Check } from "lucide-react";
-import { problems } from "@/constants/Problems";
 import { getCompletedQuestions } from "@/lib/util";
+import { useProblemContext } from "@/context/problemListContext";
 
 const Problem = () => {
+  const {problems}=useProblemContext()
   const [solved, setSolved] = useState(false);
   const context = useContext(ProblemContext);
   if (!context) {

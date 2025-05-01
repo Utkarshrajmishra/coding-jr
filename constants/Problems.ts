@@ -1,4 +1,4 @@
-export const problems = [
+export const problemsList = [
   {
     id: 1,
     title: "Merge Strings Alternately",

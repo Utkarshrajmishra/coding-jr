@@ -1,5 +1,5 @@
-import { problems } from "@/constants/Problems";
 import { ProblemContext } from "@/context/problemContext";
+import { useProblemContext } from "@/context/problemListContext";
 import { getDifficultyColor, getTagColor } from "@/lib/util";
 import { ChevronRight } from "lucide-react";
 import { useContext } from "react";
@@ -11,6 +11,8 @@ type ProblemListProps={
 
 
 const ProblemList=({setOpen}:ProblemListProps)=>{
+    const { problems } = useProblemContext();
+
 
       const context = useContext(ProblemContext);
       if (!context) {

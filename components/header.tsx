@@ -5,6 +5,7 @@ import Sidebar from "./sidebar";
 import { ChevronRight } from "lucide-react";
 import { FaAngleDown } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 
 type HeaderProps = {
   setShowProblem: (show: boolean) => void;
@@ -50,13 +51,15 @@ const Header = ({ setShowProblem, showProblem, isMobile }: HeaderProps) => {
             {showProblem ? "Open Editor" : "Open Problem"}
           </button>
           <div className="bg-zinc-700 h-9 w-9 rounded-lg">
-            <Image
-              alt="User"
-              src="/user.jpeg"
-              width={36}
-              height={46}
-              className="rounded-lg object-fit"
-            />
+            <Link href="/dashboard/login">
+              <Image
+                alt="User"
+                src="/user.jpeg"
+                width={36}
+                height={46}
+                className="rounded-lg object-fit"
+              />
+            </Link>
           </div>
           <div className="hidden sm:inline-block">
             <div className="flex items-center gap-6">

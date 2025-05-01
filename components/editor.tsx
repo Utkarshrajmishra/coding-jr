@@ -9,13 +9,15 @@ import {
 } from "../lib/util";
 import CodeMirrorEditor from "./codeMirror";
 import { ProblemContext } from "@/context/problemContext";
-import { problems } from "@/constants/Problems";
+import { useProblemContext } from "@/context/problemListContext";
 type CodeEditorProps = {
   setSubmit: (submit: boolean) => void;
   isMobile?: boolean;
 };
 
 const CodeEditor = ({ setSubmit,isMobile }: CodeEditorProps) => {
+    const { problems } = useProblemContext();
+
   const [value, setValue] = useState("console.log('hello world!');");
   const [language, setLanguage] = useState("javascript");
   const [editorHeight, setEditorHeight] = useState("300px");

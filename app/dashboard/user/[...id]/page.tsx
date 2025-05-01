@@ -7,10 +7,12 @@ import { FavProblems } from "@/components/topfavQuestions";
 import TotalWeeklyUser from "@/components/total-uses";
 import { UserPerMonth } from "@/components/userspermonth";
 import WeeklyMostSolved from "@/components/weeklymostsolved";
+import AddProblem from "@/components/addProblems";
+import CodingProblemForm from "@/components/addProblems";
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const [open, setOpen]=useState<boolean>(false)
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
@@ -46,17 +48,23 @@ const Dashboard = () => {
       </div>
 
       <div className="flex-1 flex flex-col w-full">
-        <DashboardHeader toggleSidebar={toggleSidebar} />
-        <div className="p-4 h-[calc(100vh-55px)] gap-4 flex flex-col bg-zinc-50 overflow-scroll w-full">
-          <div className="flex flex-col lg:flex-row gap-4">
-            <Analyatics />
-            <TotalWeeklyUser />
-          </div>
-          <div className="flex flex-col md:flex-row flex-wrap gap-4">
-            <UserPerMonth />
-            <FavProblems />
-            <WeeklyMostSolved />
-          </div>
+        <DashboardHeader setOpen={setOpen} toggleSidebar={toggleSidebar} />
+        <div className="p-4 h-[calc(100vh-55px)] gap-4 flex flex-col bg-white overflow-scroll w-full">
+          {!open ? (
+            <>
+              <div className="flex flex-col lg:flex-row gap-4">
+                <Analyatics />
+                <TotalWeeklyUser />
+              </div>
+              <div className="flex flex-col md:flex-row flex-wrap gap-4">
+                <UserPerMonth />
+                <FavProblems />
+                <WeeklyMostSolved />
+              </div>
+            </>
+          ) : (
+            <CodingProblemForm />
+          )}
         </div>
       </div>
     </section>

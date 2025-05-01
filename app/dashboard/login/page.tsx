@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -19,6 +19,7 @@ const LoginForm = () => {
 
   const onSubmit = (data: LoginSchemaType) => {
     console.log("Form submitted:", data);
+      router.push("/dashboard/user/123434");
   };
 
   return (
