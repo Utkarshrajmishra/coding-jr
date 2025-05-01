@@ -7,7 +7,8 @@ import { FavProblems } from "@/components/topfavQuestions";
 import TotalWeeklyUser from "@/components/total-uses";
 import { UserPerMonth } from "@/components/userspermonth";
 import WeeklyMostSolved from "@/components/weeklymostsolved";
-import AddProblem from "@/components/addProblems";
+import { Toaster } from "react-hot-toast";
+
 import CodingProblemForm from "@/components/addProblems";
 
 const Dashboard = () => {
@@ -20,6 +21,7 @@ const Dashboard = () => {
       }
     };
 
+    
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -67,6 +69,7 @@ const Dashboard = () => {
           )}
         </div>
       </div>
+      <Toaster />
     </section>
   );
 };

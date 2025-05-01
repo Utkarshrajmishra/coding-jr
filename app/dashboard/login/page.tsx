@@ -1,14 +1,20 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { Eye, EyeOff, Mail, Lock } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Eye, EyeOff, Mail, Lock, Loader } from "lucide-react";
 import { LoginSchema, LoginSchemaType } from "@/zod/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-const router = useRouter();
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -18,9 +24,12 @@ const router = useRouter();
   });
 
   const onSubmit = (data: LoginSchemaType) => {
+    setLoading(true);
     console.log("Form submitted:", data);
-      router.push("/dashboard/user/123434");
+    router.push("/dashboard/user/123434");
   };
+
+
 
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-gray-50">
@@ -95,9 +104,15 @@ const router = useRouter();
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-2 text-sm px-4 bg-neutral-600 hover:bg-neutral-700 text-white font-medium rounded-lg"
+            className="w-full py-2 text-sm px-4 flex items-center justify-center bg-neutral-600 hover:bg-neutral-700 text-white font-medium rounded-lg"
           >
-            Sign in
+            {loading ? (
+              <div className="animate-spin">
+                <Loader />
+              </div>
+            ) : (
+              "Sign in"
+            )}
           </button>
         </form>
       </div>

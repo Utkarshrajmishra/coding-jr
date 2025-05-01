@@ -9,6 +9,7 @@ import { TestCaseInputs } from "./testcaseInput";
 import { ConstraintsList } from "./constraintList";
 import MarkDownEditor from "./markdowneditor";
 import { useProblemContext } from "@/context/problemListContext";
+import toast,{Toaster} from "react-hot-toast";
 
 export default function CodingProblemForm() {
     const [desc, setDesc]=useState<string>('# Your custom markdown here')
@@ -76,6 +77,7 @@ export default function CodingProblemForm() {
         output:formData.exampleOutput,
         explanation:formData.exampleExplanation || "NA"
     }})
+          toast.success("Problem added successfully!");
 
   };
 
@@ -220,6 +222,7 @@ export default function CodingProblemForm() {
           </div>
         </form>
       </div>
+      <Toaster/>
     </div>
   );
 }
